@@ -254,17 +254,13 @@ amount of time (e.g., on large datasets).
 Feature importance evaluation
 -----------------------------
 
-The relative rank (i.e. depth) of a feature used as a decision node in a
-tree can be used to assess the relative importance of that feature with
-respect to the predictability of the target variable. Features used at
-the top of the tree contribute to the final prediction decision of a 
-larger fraction of the input samples. The **expected fraction of the 
-samples** they contribute to can thus be used as an estimate of the
-**relative importance of the features**.
+Scikit-learn uses the Mean Decrease in Impurity (MDI) to calculate the 
+relative importance of a feature for predicting the target variable.  
 
-By **averaging** those expected activity rates over several randomized
-trees one can **reduce the variance** of such an estimate and use it
-for feature selection.
+The MDI of a feature is related to the relative rank (i.e. depth) it
+occupies in a tree. Features used at the top of the tree contribute 
+to the final prediction decision of a larger fraction of the input samples
+and have a higher MDI. This measure, in turn, can be used for feature selection.
 
 The following example shows a color-coded representation of the relative
 importances of each individual pixel for a face recognition task using
